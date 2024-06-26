@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moon-facts-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: moon-facts
+  template:
+    metadata:
+      labels:
+        app: moon-facts
+    spec:
+      containers:
+      - name: moon-facts
+        image: <aws_account_id>.dkr.ecr.<your-region>.amazonaws.com/moon-facts-service:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moon-facts-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: moon-facts
