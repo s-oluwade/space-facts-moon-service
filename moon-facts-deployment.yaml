@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: moon-facts
-        image: <aws_account_id>.dkr.ecr.<your-region>.amazonaws.com/moon-facts-service:latest
+        image: 533266979424.dkr.ecr.us-east-1.amazonaws.com/moon-facts-service:latest
         ports:
         - containerPort: 5000
 ---
